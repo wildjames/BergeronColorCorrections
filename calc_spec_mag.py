@@ -6,8 +6,8 @@ import pysynphot as S
 from ucam_thruput import _make_instrument_reference_table, getref
 
 # This is the bandpass in the relevant lightpath
-telescope, instrument = "gtc", "hcam"
-filter = "g_s"
+telescope, instrument = "ntt", "ucam"
+filter = "u_s"
 
 # The number in Pickles - http://www.stsci.edu/hst/instrumentation/reference-data-for-calibration-and-tools/astronomical-catalogs/pickles-atlas
 N = 106
