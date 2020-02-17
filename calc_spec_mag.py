@@ -13,6 +13,9 @@ filter = "u_s"
 N = 106
 plax = 0.2921
 
+
+
+
 S.setref(**getref(telescope))
 bp = S.ObsBandpass('{},{},{}'.format(telescope, instrument, filter))
 
