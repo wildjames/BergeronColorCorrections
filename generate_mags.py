@@ -62,7 +62,7 @@ def get_col_correction(telescope, instrument, filter, teff, logg, plot=False):
     table.drop_duplicates(subset='WAVELENGTH (ANGSTROM)', inplace=True)
 
     # create pysynphot spectrum
-    sp = S.ArraySpectrum(table['WAVELENGTH (ANGSTROM)'], table['FLUX (ERG/CM2/S/A)'])
+    sp = S.ArraySpectrum(table['WAVELENGTH (ANGSTROM)'], table['FLUX (ERG/CM2/S/A)'], fluxunits='flam', waveunits='Angstrom')
     obs = S.Observation(sp, bp, force='taper')
     obs_HCAM_GTC = S.Observation(sp, bp_HCAM_GTC, force='taper')
     tot_mag = obs.effstim('abmag')
@@ -147,11 +147,12 @@ def construct_table(telescope, instrument, filters):
             colormap='viridis',
             title='Koester Color Corrections {} on {}'.format(telescope, instrument),
         )
+        ax.set_ylabel("{0}_s - {0}".format(filt))
         plt.tight_layout()
-        plt.savefig("color_corrections_HCAM-GTC_minus_{}-on-{}_{}.pdf".format(instrument, telescope, filt))
+        plt.savefig("colour_corrections/color_corrections_HCAM-GTC-super_minus_{}-on-{}_{}.pdf".format(instrument, telescope, filt))
         plt.close()
 
-    oname = "calculated_mags_{}_{}.csv".format(telescope, instrument)
+    oname = "colour_corrections/color_corrections_HCAM-GTC-super_minus_{}_{}.csv".format(telescope, instrument)
     print("Done all files. Saving to {}...".format(oname))
     mags.to_csv(oname, index=False, index_label=False)
     return mags
