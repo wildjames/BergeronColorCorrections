@@ -83,6 +83,13 @@ for name, spec, teff in pickles_ms:
 
     # Synthetic spectrum
     sp = S.FileSpectrum(os.path.join(pickles_path, name+'.fits'))
+    
+    # Apply extinction to that spectrum
+    a_g = 0.561
+    a_v = a_g/0.789
+    ebv = a_v/3.1
+    ext = S.Extinction(ebv, 'gal3')
+    sp = sp*ext
 
     # Set the lightpath for the hcam observations
     S.setref(**getref(hcam_tel))
