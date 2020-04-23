@@ -36,6 +36,7 @@ source = 'koester'
 # so subtracted their max error is 0.010. This will do as a rule of thumb for the Pickles data
 err = 0.00
 
+# Which combinations do we want to plot? These must match!
 x_combinations = ['u-g', 'g-r', 'r-i', 'i-z']
 std_colours = ["u'-g'", "g'-r'", "r'-i'", "i'-z'"]
 
@@ -68,6 +69,8 @@ smith_table = pd.read_fwf(smith_table_fname)
 # Which one are we using?
 cam_filters = super_filters if filt == 'super' else sdss_filters
 
+# Construct the labels for the colour corrections. 
+# These are also used as keys for what corrections to calculate and plot.
 y_combinations = []
 for sdss_filter, super_filter in zip(sdss_filters, cam_filters):
     y_combinations.append("{}-{}".format(super_filter, sdss_filter))
@@ -79,7 +82,6 @@ fig, axes = plt.subplots(
 )
 if axes.ndim < 2:
     axes = np.array([axes]).T
-
 
 filter_labels = {
     "u_s": r"$u'_{sup}$",
@@ -118,7 +120,6 @@ if tick_right:
     for row in axes:
         for cell in row:
             cell.yaxis.tick_right()
-
 
 # Each colour track will have an associated GP, used to interpolate values from it.
 # Storage for the Gaussian processes in a 2D list
