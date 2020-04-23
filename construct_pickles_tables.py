@@ -53,6 +53,7 @@ filt = 'super'
 
 # Apply extinction to that spectrum
 a_g = 0.561
+a_g = 0.0
 
 # Convert from Gaia Ag to EBV
 a_v = a_g/0.789
