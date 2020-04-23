@@ -21,7 +21,7 @@ std_name = 'SA 114 548'
 # std_name = 'BD+17 4708'
 # std_name = 'BD+33 2642'
 
-std_name = 'None'
+# std_name = 'None'
 
 # What telescope am I correcting on?
 telescope = 'ntt'
@@ -30,7 +30,7 @@ instrument = 'ucam'
 filt = 'super'
 
 # Am I a main sequence (pickles)? Or a white dwarf (koester)?
-source = 'koester'
+source = 'pickles'
 
 # Error to add to the y-axis. The Smith values have errors <0.005 mags,
 # so subtracted their max error is 0.010. This will do as a rule of thumb for the Pickles data
@@ -45,6 +45,7 @@ std_colours = ["u'-g'", "g'-r'", "r'-i'", "i'-z'"]
 
 figsize = None #(3.5, 6)
 tick_right = False
+publishable = False
 
 #  ---------------------------------------------------------
 #/-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\#
