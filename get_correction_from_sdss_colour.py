@@ -10,9 +10,9 @@ import george as g
 
 # Variables
 std_name = 'SA 114 548'
-std_name = 'BD-21 0910'
-std_name = 'BD+17 4708'
-std_name = 'BD+33 2642'
+#std_name = 'BD-21 0910'
+#std_name = 'BD+17 4708'
+#std_name = 'BD+33 2642'
 
 # std_name = 'None'
 

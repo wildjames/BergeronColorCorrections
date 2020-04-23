@@ -48,9 +48,16 @@ pickles_ms = (
 # Lightpath data
 instrument = 'ucam'
 telescope = 'ntt'
-filt = 'regular'
+filt = 'super'
 
 
+# Apply extinction to that spectrum
+a_g = 0.561
+
+# Convert from Gaia Ag to EBV
+a_v = a_g/0.789
+ebv = a_v/3.1
+ext = S.Extinction(ebv, 'gal3')
 
 # SDSS filters
 sdss_filters = ['u', 'g', 'r', 'i', 'z']
@@ -81,6 +88,10 @@ for name, spec in pickles_ms:
 
     # Synthetic spectrum
     sp = S.FileSpectrum(os.path.join(pickles_path, name+'.fits'))
+
+    # Apply extinction to that spectrum
+    ext = S.Extinction(ebv, 'gal3')
+    sp = sp*ext
 
     # Get all the magnitudes
     simulated_mags = {}
